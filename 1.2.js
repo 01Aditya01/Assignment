@@ -7,7 +7,7 @@ function getElementById(id) {
     }
     let res;
     for (let i = 0; i < node.childNodes.length; i++) {
-      res = checkId(node.childNode[i]);
+      res = checkId(node.childNodes[i]);
       if (res) {
         return res;
       }

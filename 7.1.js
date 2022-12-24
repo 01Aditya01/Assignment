@@ -68,6 +68,8 @@ class Node {
   }
 }
 let root;
+
+// function to insert key in BST
 function insert(key) {
   if (root == null) {
     root = new Node(key);
@@ -76,7 +78,7 @@ function insert(key) {
   node = root;
   while (node) {
     prev = node;
-    if (node.key > key) {
+    if (key < node.key) {
       node = node.left;
     } else {
       node = node.right;
@@ -87,9 +89,9 @@ function insert(key) {
   } else {
     prev.left = new Node(key);
   }
-  console.log(root);
 }
 
+// function to search key in BST
 function search(key) {
   node = root;
   while (node) {
@@ -105,8 +107,7 @@ function search(key) {
   return null;
 }
 
-console.log(search(13));
-
+// function to delete key in BST
 function deleteKey(node, key) {
   if (node == null) {
     return node;
@@ -124,7 +125,7 @@ function deleteKey(node, key) {
     }
     max_node = findMaxOnLeft(node.left);
     node.key = max_node.key;
-    deleteKey(node.left, max_node.key);
+    node.left = deleteKey(node.left, max_node.key);
   }
   return node;
 }
